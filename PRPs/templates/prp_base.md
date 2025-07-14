@@ -1,8 +1,8 @@
-name: "Base PRP Template v2 - Context-Rich with Validation Loops"
+name: "Expo iOS App PRP Template v2 - Context-Rich with Validation Loops"
 description: |
 
 ## Purpose
-Template optimized for AI agents to implement features with sufficient context and self-validation capabilities to achieve working code through iterative refinement.
+Template optimized for AI agents to implement mobile app features with sufficient context and self-validation capabilities to achieve working code through iterative refinement using Expo and React Native.
 
 ## Core Principles
 1. **Context is King**: Include ALL necessary documentation, examples, and caveats
