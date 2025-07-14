@@ -35,5 +35,135 @@ The app will also have an in-house calendar system that displays information fro
 
 ## DOCUMENTATION:
 
-[List out any documentation (web pages, sources for an MCP server like Crawl4AI RAG, etc.) that will need to be referenced during development]
+iOS Development & Core Frameworks
+Apple Developer Documentation
 
+Swift Programming Language Guide - https://docs.swift.org/swift-book/
+SwiftUI Framework - https://developer.apple.com/documentation/swiftui/
+UIKit Framework (if using hybrid approach) - https://developer.apple.com/documentation/uikit/
+Core Data Framework (local data persistence) - https://developer.apple.com/documentation/coredata/
+CloudKit Framework (iCloud sync) - https://developer.apple.com/documentation/cloudkit/
+UserNotifications Framework (reminders/notifications) - https://developer.apple.com/documentation/usernotifications/
+EventKit Framework (calendar integration) - https://developer.apple.com/documentation/eventkit/
+App Store Connect API - https://developer.apple.com/documentation/appstoreconnectapi/
+
+AI Integration & Natural Language Processing
+OpenAI APIs
+
+OpenAI API Documentation - https://platform.openai.com/docs/
+GPT-4 API Reference - https://platform.openai.com/docs/api-reference/
+Function Calling Guide - https://platform.openai.com/docs/guides/function-calling/
+
+Alternative AI Services
+
+Anthropic Claude API - https://docs.anthropic.com/
+Google Gemini API - https://ai.google.dev/docs/
+Azure OpenAI Service - https://learn.microsoft.com/en-us/azure/cognitive-services/openai/
+
+Calendar & Educational Platform Integration
+Google APIs
+
+Google Calendar API - https://developers.google.com/calendar/api/
+Google Classroom API - https://developers.google.com/classroom/
+Google OAuth 2.0 Documentation - https://developers.google.com/identity/protocols/oauth2/
+Google APIs Client Library for Swift - https://github.com/googleapis/google-api-swift-client
+
+Learning Management Systems
+
+Canvas API Documentation - https://canvas.instructure.com/doc/api/
+Blackboard REST API - https://developer.blackboard.com/portal/displayApi/
+Schoology API - https://developers.schoology.com/api/
+Moodle Web Services API - https://docs.moodle.org/dev/Web_services_API/
+
+Data Storage & Backend Services
+Firebase (Google)
+
+Firebase iOS Documentation - https://firebase.google.com/docs/ios/
+Firestore Database - https://firebase.google.com/docs/firestore/
+Firebase Authentication - https://firebase.google.com/docs/auth/ios/
+Firebase Cloud Functions - https://firebase.google.com/docs/functions/
+
+Alternative Backend Services
+
+AWS Amplify iOS - https://docs.amplify.aws/lib/q/platform/ios/
+Supabase Swift - https://supabase.com/docs/reference/swift/
+MongoDB Realm Swift - https://docs.mongodb.com/realm/sdk/swift/
+
+Networking & API Integration
+HTTP & Networking
+
+URLSession Documentation - https://developer.apple.com/documentation/foundation/urlsession/
+Alamofire (Third-party HTTP library) - https://github.com/Alamofire/Alamofire
+Combine Framework (reactive programming) - https://developer.apple.com/documentation/combine/
+
+Local Storage & Data Management
+Core Data & SQLite
+
+Core Data Programming Guide - https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/
+SQLite.swift - https://github.com/stephencelis/SQLite.swift
+FMDB (SQLite wrapper) - https://github.com/ccgus/fmdb
+
+UI/UX & Design Resources
+Design Guidelines
+
+Apple Human Interface Guidelines - https://developer.apple.com/design/human-interface-guidelines/
+SF Symbols - https://developer.apple.com/sf-symbols/
+Apple Design Resources - https://developer.apple.com/design/resources/
+
+Third-party UI Libraries
+
+Charts (Swift charting library) - https://github.com/danielgindi/Charts
+Lottie iOS (animations) - https://github.com/airbnb/lottie-ios
+
+Push Notifications & Background Processing
+Apple Push Notification Service
+
+APNs Documentation - https://developer.apple.com/documentation/usernotifications/
+Background App Refresh - https://developer.apple.com/documentation/backgroundtasks/
+Local Notifications - https://developer.apple.com/documentation/usernotifications/scheduling_a_notification_locally_from_your_app
+
+Security & Privacy
+Data Protection
+
+App Transport Security - https://developer.apple.com/documentation/security/app_transport_security/
+Keychain Services - https://developer.apple.com/documentation/security/keychain_services/
+Privacy Guidelines - https://developer.apple.com/app-store/review/guidelines/#privacy
+
+Testing & Analytics
+Testing Frameworks
+
+XCTest Framework - https://developer.apple.com/documentation/xctest/
+Quick & Nimble (BDD testing) - https://github.com/Quick/Quick
+
+Analytics & Monitoring
+
+Firebase Analytics - https://firebase.google.com/docs/analytics/ios/
+Crashlytics - https://firebase.google.com/docs/crashlytics/get-started?platform=ios
+TestFlight - https://developer.apple.com/testflight/
+
+MCP Servers & RAG Systems
+Web Scraping & Content Analysis
+
+Crawl4AI - https://github.com/unclecode/crawl4ai
+Beautiful Soup Documentation (if using Python backend) - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+Scrapy Documentation - https://docs.scrapy.org/
+
+Vector Databases & RAG
+
+Pinecone Documentation - https://docs.pinecone.io/
+Weaviate Documentation - https://weaviate.io/developers/weaviate/
+Chroma Documentation - https://docs.trychroma.com/
+
+Educational Standards & Compliance
+Privacy Compliance
+
+FERPA Guidelines - https://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html
+COPPA Compliance - https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform/childrens-online-privacy-protection-rule
+GDPR for Apps - https://gdpr.eu/
+
+Deployment & App Store
+App Store Guidelines
+
+App Store Review Guidelines - https://developer.apple.com/app-store/review/guidelines/
+App Store Connect Help - https://help.apple.com/app-store-connect/
+TestFlight Documentation - https://developer.apple.com/testflight/
