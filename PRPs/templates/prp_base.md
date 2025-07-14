@@ -32,19 +32,21 @@ Template optimized for AI agents to implement mobile app features with sufficien
 ### Documentation & References (list all context needed to implement the feature)
 ```yaml
 # MUST READ - Include these in your context window
-- url: [Official API docs URL]
-  why: [Specific sections/methods you'll need]
+- url: [Expo API docs URL]
+  why: [Specific modules/methods you'll need]
   
-- file: [path/to/example.py]
-  why: [Pattern to follow, gotchas to avoid]
-  
-- doc: [Library documentation URL] 
+- doc: [React Native documentation URL] 
   section: [Specific section about common pitfalls]
-  critical: [Key insight that prevents common errors]
+  why: [Key insight that prevents common errors]
 
 - docfile: [PRPs/ai_docs/file.md]
   why: [docs that the user has pasted in to the project]
 
+- expo: [Expo SDK documentation URL]
+  why: [Specific module like Camera, Location, etc.]
+  
+- native: [Platform-specific considerations]
+  why: [iOS-specific requirements]
 ```
 
 ### Current Codebase tree (run `tree` in the root of the project) to get an overview of the codebase
