@@ -33,10 +33,6 @@ Calendar: Integration with learning systems (Google Classroom, Canvas, Blackboar
 The app will also have an in-house calendar system that displays information from learning systems and outside calendars along with the various tasks that the user has. 
 
 
-## EXAMPLES:
-
-[Provide and explain examples that you have in the `examples/` folder]
-
 ## DOCUMENTATION:
 
 [List out any documentation (web pages, sources for an MCP server like Crawl4AI RAG, etc.) that will need to be referenced during development]
