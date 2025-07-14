@@ -32,18 +32,21 @@ Template optimized for AI agents to implement features with sufficient context a
 ### Documentation & References (list all context needed to implement the feature)
 ```yaml
 # MUST READ - Include these in your context window
-- url: [Official API docs URL]
-  why: [Specific sections/methods you'll need]
+  - url: [Expo API docs URL]
+  why: [Specific modules/methods you'll need]
   
-- file: [path/to/example.py]
-  why: [Pattern to follow, gotchas to avoid]
-  
-- doc: [Library documentation URL] 
+- doc: [React Native documentation URL] 
   section: [Specific section about common pitfalls]
-  critical: [Key insight that prevents common errors]
-
+  why: [Key insight that prevents common errors]
+  
 - docfile: [PRPs/ai_docs/file.md]
   why: [docs that the user has pasted in to the project]
+
+- expo: [Expo SDK documentation URL]
+  why: [Specific module like Camera, Location, etc.]
+
+- native: [Platform-specific considerations]
+  why: [iOS-specific requirements]
 
 ```
 
@@ -58,11 +61,13 @@ Template optimized for AI agents to implement features with sufficient context a
 ```
 
 ### Known Gotchas of our codebase & Library Quirks
-```python
-# CRITICAL: [Library name] requires [specific setup]
-# Example: FastAPI requires async functions for endpoints
-# Example: This ORM doesn't support batch inserts over 1000 records
-# Example: We use pydantic v2 and  
+```javascript
+# Example: Expo requires expo install for compatible versions
+# Example: React Navigation requires specific stack setup
+# Example: AsyncStorage has size limits and requires error handling
+# Example: iOS requires specific permissions in app.json/app.config.js
+# Example: Expo Go has limitations compared to development builds
+
 ```
 
 ## Implementation Blueprint
@@ -70,12 +75,13 @@ Template optimized for AI agents to implement features with sufficient context a
 ### Data models and structure
 
 Create the core data models, we ensure type safety and consistency.
-```python
+```javascript
 Examples: 
- - orm models
- - pydantic models
- - pydantic schemas
- - pydantic validators
+  - State management schemas (Redux/Context)
+ - API response types
+ - Component prop types
+ - Navigation param types
+ - AsyncStorage data structures
 
 ```
 
@@ -83,14 +89,14 @@ Examples:
 
 ```yaml
 Task 1:
-MODIFY src/existing_module.py:
-  - FIND pattern: "class OldImplementation"
-  - INJECT after line containing "def __init__"
-  - PRESERVE existing method signatures
+MODIFY src/navigation/AppNavigator.js:
+  - FIND pattern: "const Stack = createStackNavigator()"
+  - INJECT after existing screen definitions
+  - PRESERVE existing navigation structure
 
-CREATE src/new_feature.py:
-  - MIRROR pattern from: src/similar_feature.py
-  - MODIFY class name and core logic
+CREATE src/screens/FeatureScreen.js:
+  - MIRROR pattern from: src/screens/SimilarScreen.js
+  - MODIFY component name and core logic
   - KEEP error handling pattern identical
 
 ...(...)
@@ -104,40 +110,58 @@ Task N:
 ### Per task pseudocode as needed added to each task
 ```python
 
-# Task 1
-# Pseudocode with CRITICAL details dont write entire code
-async def new_feature(param: str) -> Result:
-    # PATTERN: Always validate input first (see src/validators.py)
-    validated = validate_input(param)  # raises ValidationError
+// Task 1
+// Pseudocode with CRITICAL details dont write entire code
+const FeatureScreen = () => {
+    // PATTERN: Always use custom hooks for complex logic (see src/hooks/)
+    const { data, loading, error } = useFeature();
     
-    # GOTCHA: This library requires connection pooling
-    async with get_connection() as conn:  # see src/db/pool.py
-        # PATTERN: Use existing retry decorator
-        @retry(attempts=3, backoff=exponential)
-        async def _inner():
-            # CRITICAL: API returns 429 if >10 req/sec
-            await rate_limiter.acquire()
-            return await external_api.call(validated)
-        
-        result = await _inner()
+    // GOTCHA: Expo permissions must be requested before use
+    const requestPermission = async () => {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+            // PATTERN: Use existing alert pattern
+            showAlert('Permission denied');
+            return;
+        }
+    };
     
-    # PATTERN: Standardized response format
-    return format_response(result)  # see src/utils/responses.py
+    // PATTERN: Use existing loading/error states
+    if (loading) return <LoadingSpinner />;
+    if (error) return <ErrorMessage error={error} />;
+    
+    // CRITICAL: Always handle navigation params safely
+    const handleNavigation = () => {
+        navigation.navigate('NextScreen', { 
+            param: data?.id || null // safe navigation
+        });
+    };
+    
+    return (
+        <SafeAreaView style={styles.container}>
+            {/* Component JSX */}
+        </SafeAreaView>
+    );
+};
 ```
 
 ### Integration Points
 ```yaml
-DATABASE:
-  - migration: "Add column 'feature_enabled' to users table"
-  - index: "CREATE INDEX idx_feature_lookup ON users(feature_id)"
+NAVIGATION:
+  - add to: src/navigation/AppNavigator.js
+  - pattern: "Stack.Screen name='Feature' component={FeatureScreen}"
   
-CONFIG:
-  - add to: config/settings.py
-  - pattern: "FEATURE_TIMEOUT = int(os.getenv('FEATURE_TIMEOUT', '30'))"
+STATE_MANAGEMENT:
+  - add to: src/store/reducers/index.js (if Redux)
+  - pattern: "combineReducers({ feature: featureReducer })"
   
-ROUTES:
-  - add to: src/api/routes.py  
-  - pattern: "router.include_router(feature_router, prefix='/feature')"
+PERMISSIONS:
+  - add to: app.json
+  - pattern: "permissions: ['android.permission.CAMERA']"
+  
+DEPENDENCIES:
+  - add to: package.json
+  - pattern: "expo install expo-camera expo-location"
 ```
 
 ## Validation Loop
@@ -145,68 +169,75 @@ ROUTES:
 ### Level 1: Syntax & Style
 ```bash
 # Run these FIRST - fix any errors before proceeding
-ruff check src/new_feature.py --fix  # Auto-fix what's possible
-mypy src/new_feature.py              # Type checking
+npm run lint                     # ESLint checking
+npm run type-check              # TypeScript checking (if used)
+npx expo install --fix          # Fix dependency issues
 
 # Expected: No errors. If errors, READ the error and fix.
 ```
 
 ### Level 2: Unit Tests each new feature/file/function use existing test patterns
 ```python
-# CREATE test_new_feature.py with these test cases:
-def test_happy_path():
-    """Basic functionality works"""
-    result = new_feature("valid_input")
-    assert result.status == "success"
+// CREATE __tests__/FeatureScreen.test.js with these test cases:
+import { render, fireEvent } from '@testing-library/react-native';
+import FeatureScreen from '../FeatureScreen';
 
-def test_validation_error():
-    """Invalid input raises ValidationError"""
-    with pytest.raises(ValidationError):
-        new_feature("")
+describe('FeatureScreen', () => {
+    test('renders correctly', () => {
+        const { getByText } = render(<FeatureScreen />);
+        expect(getByText('Feature Title')).toBeTruthy();
+    });
 
-def test_external_api_timeout():
-    """Handles timeouts gracefully"""
-    with mock.patch('external_api.call', side_effect=TimeoutError):
-        result = new_feature("valid")
-        assert result.status == "error"
-        assert "timeout" in result.message
-```
+    test('handles button press', () => {
+        const { getByTestId } = render(<FeatureScreen />);
+        fireEvent.press(getByTestId('feature-button'));
+        // Assert expected behavior
+    });
+
+    test('displays loading state', () => {
+        // Mock loading state
+        const { getByTestId } = render(<FeatureScreen />);
+        expect(getByTestId('loading-spinner')).toBeTruthy();
+    });
+
+    test('handles error state', () => {
+        // Mock error state
+        const { getByText } = render(<FeatureScreen />);
+        expect(getByText('Error message')).toBeTruthy();
+    });
+});
 
 ```bash
 # Run and iterate until passing:
-uv run pytest test_new_feature.py -v
-# If failing: Read error, understand root cause, fix code, re-run (never mock to pass)
+npm test -- FeatureScreen.test.js
+# If failing: Read error, understand root cause, fix code, re-run
 ```
 
-### Level 3: Integration Test
-```bash
-# Start the service
-uv run python -m src.main --dev
-
-# Test the endpoint
-curl -X POST http://localhost:8000/feature \
-  -H "Content-Type: application/json" \
-  -d '{"param": "test_value"}'
-
-# Expected: {"status": "success", "data": {...}}
-# If error: Check logs at logs/app.log for stack trace
-```
 
 ## Final validation Checklist
-- [ ] All tests pass: `uv run pytest tests/ -v`
-- [ ] No linting errors: `uv run ruff check src/`
-- [ ] No type errors: `uv run mypy src/`
-- [ ] Manual test successful: [specific curl/command]
+- [ ] All tests pass: npm test
+- [ ] No linting errors: npm run lint
+- [ ] No type errors: npm run type-check
+- [ ] Navigation flows work
+- [ ] Permissions work successfully
 - [ ] Error cases handled gracefully
-- [ ] Logs are informative but not verbose
-- [ ] Documentation updated if needed
 
 ---
 
 ## Anti-Patterns to Avoid
 - ❌ Don't create new patterns when existing ones work
 - ❌ Don't skip validation because "it should work"  
-- ❌ Don't ignore failing tests - fix them
+- ❌ Don't ignore failing tests - fix them    
 - ❌ Don't use sync functions in async context
 - ❌ Don't hardcode values that should be config
 - ❌ Don't catch all exceptions - be specific
+- ❌ Don't use React Native APIs directly when Expo equivalents exist
+- ❌ Don't skip permission requests for sensitive features
+- ❌ Don't ignore platform-specific differences (iOS vs Android)
+- ❌ Don't use deprecated navigation patterns
+- ❌ Don't hardcode dimensions - use responsive design
+- ❌ Don't forget to handle offline states
+- ❌ Don't use synchronous storage operations
+- ❌ Don't ignore accessibility requirements
+- ❌ Don't skip testing on both platforms
+- ❌ Don't use console.log in production code
