@@ -18,15 +18,15 @@ Stats: The statistics of the game system will be displayed in the stats tab. Poi
 
 
 AI Assistant: Tool used to optimize student schedules and help with any studying problems. Will understand the details of the student’s academic and extracurricular life so that it can help with any problems associated with either. It is imperative that the AI remembers these details of the student the whole time the user is using the app. Also provides support for productivity (e.g. cheering the student on idk)
-After the student inputs their day-to-day schedule, the AI remembers this and assists with any scheduling difficulties. 
-If the user has tasks that aren’t due the day of such as an exam or project for a class, the AI will be able to determine how much time the user should allocate per day based on the user’s schedule and free time within that schedule so that the user can study effectively for the exam or complete the project on time 
-The user can personally notify the AI if they want to focus on a specific class, and the AI will automatically allocate more study time or extra time for assignments associated with that class
-Automatic deadline reminders with escalating urgency as due dates approach
-Study method recommendations based on learning style assessment and past performance
-Integration with learning management systems (Google Classroom, Canvas, Blackboard, etc.) to pull assignments and grades automatically
-"Focus mode" that blocks distracting apps during scheduled study sessions
-Sleep schedule optimization based on class times and study load
-Ability to analyze class syllabuses to see when teachers have office hours so students can plan specific times and dates where they can to office hours
+    -After the student inputs their day-to-day schedule, the AI remembers this and assists with any scheduling difficulties. 
+    -If the user has tasks that aren’t due the day of such as an exam or project for a class, the AI will be able to determine how much time the user should allocate per day based on the user’s schedule and free time within that schedule so that the user can study effectively for the exam or complete the project on time 
+    -The user can personally notify the AI if they want to focus on a specific class, and the AI will automatically allocate more study time or extra time for assignments associated with that class
+    -Automatic deadline reminders with escalating urgency as due dates approach
+    -Study method recommendations based on learning style assessment and past performance
+    -Integration with learning management systems (Google Classroom, Canvas, Blackboard, etc.) to pull assignments and grades automatically
+    -"Focus mode" that blocks distracting apps during scheduled study sessions
+    -Sleep schedule optimization based on class times and study load
+    -Ability to analyze class syllabuses to see when teachers have office hours so students can plan specific times and dates where they can to       office hours
 
 
 Calendar: Integration with learning systems (Google Classroom, Canvas, Blackboard, etc.) as well as outside calendars (Google Calendar) to display the user’s schedule on a daily, weekly, and monthly basis. 
