@@ -42,11 +42,14 @@ Using PRPs/templates/prp_base.md as template:
 
 ### Validation Gates (Must be Executable) eg for python
 ```bash
-# Syntax/Style
-ruff check --fix && mypy .
+# Syntax/Style/Type Checking
+npx tsc --noEmit && npx eslint . --fix
 
 # Unit Tests
-uv run pytest tests/ -v
+npm test
+
+# Expo Environment Check
+npx expo doctor
 
 ```
 
